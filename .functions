@@ -168,9 +168,13 @@ webmify(){
 # direct it all to /dev/null
 function nullify() {
   "$@" >/dev/null 2>&1
-
+}
 # `shellswitch [bash |zsh]`
 #   Must be in /etc/shells
 shellswitch () {
 	chsh -s $(brew --prefix)/bin/$1
+}
+
+function cput() {
+	sudo powermetrics|grep -i "CPU die temperature"
 }
