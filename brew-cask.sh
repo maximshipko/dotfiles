@@ -5,8 +5,6 @@
 # to maintain cask ....
 #     brew cleanup && brew update && brew cask upgrade`
 
-
-# daily
 brew cask install sublime-text
 brew cask install visual-studio-code
 brew cask install google-chrome
