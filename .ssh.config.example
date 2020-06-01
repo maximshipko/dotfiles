@@ -1,10 +1,16 @@
 # copy to ~/.ssh/config
+# .ssh/control directory should be created
+
 
 Host github.com
 	ControlMaster auto
 	ControlPersist 120
 
 Host *
+	AddKeysToAgent yes
+	UseKeychain yes
+	IdentityFile ~/.ssh/id_rsa
+
 	# Always use SSH2.
 	Protocol 2
 
