@@ -22,11 +22,13 @@ brew install z
 
 brew install git
 brew install node # This installs `npm` too using the recommended installation method
+brew install yarn
 brew install tree
 
-brew install ncdu # find where your diskspace went
+brew install ncdu # find where your diskspace went: ncdu ~
 
 brew install zsh
+brew install antigen
 
 # Remove outdated 
 brew cleanup
