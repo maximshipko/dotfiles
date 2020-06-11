@@ -50,9 +50,6 @@ fi
 ### install of common things
 ###
 
-# autocompletion for git branch names https://git-scm.com/book/en/v1/Git-Basics-Tips-and-Tricks
-curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
-
 # updating npm, as node usualy comes with outdated
 npm install -g npm
 
@@ -69,22 +66,6 @@ npm install -g diff-so-fancy
 npm install -g trash-cli
 
 npm install -g rimraf
-
-# github.com/rupa/z   - oh how i love you
-git clone https://github.com/rupa/z.git ~/code/z
-# consider reusing your current .z file if possible. it's painful to rebuild :)
-# z is hooked up in .bash_profile
-
-curl -L git.io/antigen > ~/code/antigen/antigen.zsh
-
-# github.com/thebitguru/play-button-itunes-patch
-# disable itunes opening on media keys
-git clone https://github.com/thebitguru/play-button-itunes-patch ~/code/play-button-itunes-patch
-
-
-# install nvm (Node Version Nanager, https://github.com/nvm-sh/nvm)
-# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-
 
 ###
 ##############################################################################################################
@@ -119,7 +100,7 @@ sh .osx
 # symlink it up!
 ./symlink-setup.sh
 
-# add manual symlink for .ssh/config and probably .config/fish
+# add manual symlink for .ssh/config
 
 ###
 ##############################################################################################################
