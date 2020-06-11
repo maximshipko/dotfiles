@@ -56,3 +56,4 @@ auto-ls () {
 }
 # chpwd_functions=( auto-ls $chpwd_functions )
 
+source ~/.aliases

@@ -66,6 +66,7 @@ npm install -g diff-so-fancy
 npm install -g trash-cli
 
 npm install -g rimraf
+npm install -g npm-check
 
 ###
 ##############################################################################################################
