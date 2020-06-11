@@ -1,24 +1,17 @@
 
-# working files
-.vim/viminfo
-.vim/swaps/*
-.vim/undo
+# Ignore Westorm files
+.idea
 
 # git credential file
 .gitconfig.local
 
-
-# no thx
+# npm modules and logs
 node_modules
+npm-debug.log
+yarn-error.log
 
 # Folder view configuration files
 .DS_Store
-Desktop.ini
 
 # Thumbnail cache files
-._*
 Thumbs.db
-
-# Files that might appear on external disks
-.Spotlight-V100
-.Trashes

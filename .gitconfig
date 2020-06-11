@@ -1,6 +1,7 @@
 [alias]
 	c = commit -am
 	fpush = push --force
+	pushf = push --force-with-lease
 	s = status
 	sclone = clone --depth=1
 	amend = commit --amend --all
@@ -9,9 +10,6 @@
 	co = checkout
 	df = diff --color --color-words --abbrev
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-	cherrypick = cherry-pick
-	cherry = cherry-pick
-	cp = cherry-pick
 
 	# show commit log of unique commits of this branch (not on master)
 	diffcommitsfrommaster = log --no-merges master..
@@ -26,9 +24,10 @@
 	git = !exec git
 
 [core]
-	excludesfile = ~/.gitignore
+	editor = vim
+	excludesfile = ~/.gitignore # global ignors
 	attributesfile = ~/.gitattributes
-	precomposeUnicode = true
+	precomposeUnicode = true # useful when sharing a repository between Mac OS and Linux or Windows
 
 [pager]
 	# insanely beautiful diffs ==> npm install -g diff-so-fancy
@@ -36,23 +35,22 @@
 	show = diff-so-fancy | less --tabs=4 -RFX
 
 [interactive]
-  # disabled until github.com/so-fancy/diff-so-fancy/pull/172 is resolved :(
-	# diffFilter = "diff-so-fancy"
+	diffFilter = "diff-so-fancy"
 
 # so much color
 [color]
 	ui = auto
 [color "diff"]
-	meta = yellow bold
-	commit = green bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+	meta = yellow 
+	commit = green 
+	frag = magenta 
+	old = red 
+	new = green 
 	whitespace = red reverse
     newMoved = cyan
     oldMoved = blue
 [color "diff-highlight"]
-	oldNormal = red bold
+	oldNormal = red
 	oldHighlight = "red bold 52"
 	newNormal = "green bold"
 	newHighlight = "green bold 22"
@@ -84,10 +82,6 @@
 	default = current
 	followTags = true
 
-# use separate file for username / github token / etc
-[include]
-  path = ~/.gitconfig.local
-
 #[init]
 #	templatedir = ~/.git_template
 
@@ -97,14 +91,20 @@
 	required = true
 
 [fetch]
-	prune = true
+#	prune = true # fetching/pulling will also remove any remote-tracking references that no longer exist on the remote
+
 [diff]
-    # Show blocks of moved text of at least 20 alphanumeric characters differently than adds/deletes
-    # https://blog.github.com/2018-04-05-git-217-released/
     colorMoved = zebra
 
 [stash]
 	showPatch = true
+	
 [log]
 	date = relative
 
+# use separate file for username / github token / etc
+# For example:
+#   git config -f ~/.gitconfig.local user.email "your@email.com"
+#   git config -f ~/.gitconfig.local user.name "Name Lastname"
+[include]
+  path = ~/.gitconfig.local
