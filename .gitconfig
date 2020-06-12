@@ -1,33 +1,61 @@
 [alias]
-	c = commit -am
+	c = commit -amv
 	fpush = push --force
 	pushf = push --force-with-lease
-	s = status
-	sclone = clone --depth=1
+	s = status -sb
 	amend = commit --amend --all
+	amendd = commit --amend --all --reuse-message=HEAD
 	undocommit = reset HEAD~
-	hreset = reset --hard
 	co = checkout
+	bra = branch -avv
 	df = diff --color --color-words --abbrev
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-
-	# show commit log of unique commits of this branch (not on master)
-	diffcommitsfrommaster = log --no-merges master..
-	# show unified diff of unique commits of this branch
-	difffrommaster = diff master...
-	# ^^^^ Holy crap two dots vs three dots, so important. https://stackoverflow.com/a/48681527
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	outgoing = log @{u}..
+	incoming = log ..@{u}
+	out = log --pretty=oneline --abbrev-commit --graph @{u}..
+	in = !git fetch && git log --pretty=oneline --abbrev-commit --graph ..@{u}
+	master = !git checkout master && git pull --prune
+	develop = !git checkout develop && git pull --prune
 
 	# Show the diff between the latest commit and the current state
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
 	reup = rebase-update # depot_tools specific
-	git = !exec git
+	git = !exec git # in case if you dobletype git like: '> git git log'
+
+	# Find commits by source code
+	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+
+	# Find commits by commit message
+	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+	# Remove branches that have already been merged with master
+	# a.k.a. ‘delete merged’
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+
+	# List contributors with number of commits
+	contributors = shortlog --summary --numbered
+
+	# Credit an author on the latest commit
+	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+
+	# List aliases. sometime you need cheat sheet
+	aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+
+	# Initialize, add all files and commit
+  	this = !git init && git add . && git commit -m 'Initial commit'
+	
 
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore # global ignors
 	attributesfile = ~/.gitattributes
 	precomposeUnicode = true # useful when sharing a repository between Mac OS and Linux or Windows
+	# optimization for Windows
+	fscache = true
+	preloadIndex = true
 
 [pager]
 	# insanely beautiful diffs ==> npm install -g diff-so-fancy
