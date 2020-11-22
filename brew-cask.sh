@@ -15,6 +15,8 @@ brew cask install skype
 # brew cask install skype-for-business
 brew cask install spotify
 brew cask install telegram
+brew cask install messenger
+brew cask install virtualbox # required for docker-machine. For installation unblock 'Oracle America, inc' in Security settings
 
 brew tap homebrew/cask-fonts
 brew cask install font-fira-code

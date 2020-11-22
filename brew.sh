@@ -31,5 +31,8 @@ brew install ncdu # find where your diskspace went: ncdu ~
 brew install zsh
 brew install antigen
 
+# docker
+brew install docker docker-machine docker-compose
+
 # Remove outdated 
 brew cleanup
