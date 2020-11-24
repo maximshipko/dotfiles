@@ -25,6 +25,7 @@ brew install node # This installs `npm` too using the recommended installation m
 brew install yarn
 brew install tree
 brew install coreutils
+brew install pyenv
 
 brew install ncdu # find where your diskspace went: ncdu ~
 
