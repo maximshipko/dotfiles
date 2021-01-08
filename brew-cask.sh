@@ -13,6 +13,7 @@ brew cask install dropbox
 brew cask install vlc
 brew cask install skype
 # brew cask install skype-for-business
+brew cask install zoom
 brew cask install spotify
 brew cask install telegram
 brew cask install messenger
