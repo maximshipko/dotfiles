@@ -1,25 +1,20 @@
 #!/bin/zsh
 
-# https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md
-
-# to maintain cask ....
-#     brew cleanup && brew update && brew cask upgrade`
-
-brew cask install sublime-text
-brew cask install visual-studio-code
-brew cask install google-chrome
-brew cask install iterm2
-brew cask install dropbox
-brew cask install vlc
-brew cask install skype
-# brew cask install skype-for-business
-brew cask install zoom
-brew cask install spotify
-brew cask install telegram
-brew cask install messenger
-brew cask install virtualbox # required for docker-machine. For installation unblock 'Oracle America, inc' in Security settings
+brew install --cask sublime-text
+brew install --cask visual-studio-code
+brew install --cask google-chrome
+brew install --cask docker
+brew install --cask dropbox
+brew install --cask vlc
+brew install --cask skype
+brew install --cask skype-for-business
+brew install --cask zoom
+brew install --cask spotify
+brew install --cask telegram
+brew install --cask messenger
+brew install --cask intellij-idea
+brew install --cask eclipse-ide
+brew install --cask postman
 
 brew tap homebrew/cask-fonts
-brew cask install font-fira-code
-
-
+brew install --cask font-fira-code

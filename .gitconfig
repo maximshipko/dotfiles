@@ -16,6 +16,7 @@
 	out = log --pretty=oneline --abbrev-commit --graph @{u}..
 	in = !git fetch && git log --pretty=oneline --abbrev-commit --graph ..@{u}
 	master = !git checkout master && git pull --prune
+	main = !git checkout main && git pull --prune
 	develop = !git checkout develop && git pull --prune
 
 	# Show the diff between the latest commit and the current state
@@ -119,7 +120,7 @@
 	required = true
 
 [fetch]
-#	prune = true # fetching/pulling will also remove any remote-tracking references that no longer exist on the remote
+	prune = true # fetching/pulling will also remove any remote-tracking references that no longer exist on the remote
 
 [diff]
     colorMoved = zebra
@@ -136,3 +137,5 @@
 #   git config -f ~/.gitconfig.local user.name "Name Lastname"
 [include]
   path = ~/.gitconfig.local
+[pull]
+	ff = only

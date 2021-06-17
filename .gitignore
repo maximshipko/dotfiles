@@ -1,6 +1,6 @@
 
-# Ignore Westorm files
-.idea
+# Ignore Webstorm files
+#.idea
 
 # git credential file
 .gitconfig.local

@@ -36,7 +36,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 
 # colors for all files!
-antigen bundle trapd00r/zsh-syntax-highlighting-filetypes
+# antigen bundle trapd00r/zsh-syntax-highlighting-filetypes
 
 # ZSH theme
 # antigen bundle sindresorhus/pure
@@ -54,13 +54,12 @@ auto-ls () {
 	# explicit sexy ls'ing as aliases arent honored in here.
 	hash gls >/dev/null 2>&1 && CLICOLOR_FORCE=1 gls -aFh --color --group-directories-first || ls
 }
-# chpwd_functions=( auto-ls $chpwd_functions )
+chpwd_functions=( auto-ls $chpwd_functions )
 
 source ~/.aliases
 
-# Enabling pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
