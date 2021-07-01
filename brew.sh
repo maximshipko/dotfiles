@@ -31,6 +31,7 @@ brew install yarn
 brew install tree
 brew install coreutils
 brew install openjdk@8
+brew install helm
 
 brew install ncdu # find where your diskspace went: ncdu ~
 
