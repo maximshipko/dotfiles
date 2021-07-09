@@ -30,6 +30,7 @@ alias cleanup_dsstore="find . -name '*.DS_Store' -type f -ls -delete"
 alias g="git"
 alias v="vim"
 alias ungz="gunzip -k"
+alias k="kubectl"
 
 # Update installed Homebrew, npm, and their installed packages
 alias upgrade="brew -v update; brew upgrade; brew cleanup; brew doctor; npm install npm -g; npm-check -g -u"

@@ -3,7 +3,7 @@
 brew install --cask sublime-text
 brew install --cask visual-studio-code
 brew install --cask google-chrome
-brew install --cask docker
+brew install --cask docker # Docker Desktop (with Docker Compose, Kubernetes)
 brew install --cask dropbox
 brew install --cask vlc
 brew install --cask skype
