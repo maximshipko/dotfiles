@@ -105,3 +105,12 @@ sh .osx
 
 ###
 ##############################################################################################################
+
+# `.extra` file is not included in repository. It will be sourced in `.zshrc`
+# Use it for any private thing you dont want to store in the repository (tokens, keys etc)
+touch ~/.extra
+
+# For example, .extra may contain:
+# export NPM_TOKEN="NpmToken.ddddaaaa-c111-2ddd-3333-e444444e444f"
+# git config --global user.name "Max Shypko"
+# git config --global user.email "maximshipko@gmail.com"

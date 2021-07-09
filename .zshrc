@@ -58,6 +58,9 @@ chpwd_functions=( auto-ls $chpwd_functions )
 
 source ~/.aliases
 
+# any private/sensetive info (like auth tokens, api keys) can set in `.extra`
+source ~/.extra
+
 export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
