@@ -12,6 +12,7 @@ brew install --cask zoom
 brew install --cask spotify
 brew install --cask telegram
 brew install --cask messenger
+brew install --cask slack
 brew install --cask intellij-idea
 brew install --cask eclipse-ide
 brew install --cask postman
