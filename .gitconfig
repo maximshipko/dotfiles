@@ -47,6 +47,9 @@
 
 	# Initialize, add all files and commit
   	this = !git init && git add . && git commit -m 'Initial commit'
+
+	# commit with given datetime (2021-11-23T15:32:10)
+	trick = "!f() { GIT_AUTHOR_DATE=\"$1\" GIT_COMMITTER_DATE=\"$1\" git commit; }; f"
 	
 
 [core]
