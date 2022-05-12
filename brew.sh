@@ -29,6 +29,7 @@ brew install git
 brew install node # This installs `npm` too using the recommended installation method
 brew install yarn
 brew install tree
+brew install diff-so-fancy
 brew install coreutils
 brew install openjdk@11
 brew install helm
