@@ -54,7 +54,7 @@
 
 [core]
 	editor = vim
-	excludesfile = ~/.gitignore # global ignors
+	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
 	precomposeUnicode = true # useful when sharing a repository between Mac OS and Linux or Windows
 	# optimization for Windows

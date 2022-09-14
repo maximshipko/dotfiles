@@ -15,3 +15,7 @@ yarn-error.log
 
 # Thumbnail cache files
 Thumbs.db
+
+# nx app proxy configuration
+proxy.conf.json
+_test_.json
