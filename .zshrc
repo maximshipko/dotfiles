@@ -61,8 +61,13 @@ source ~/.aliases
 # any private/sensetive info (like auth tokens, api keys) can set in `.extra`
 source ~/.extra
 
-export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export PATH="/usr/local/sbin:$PATH"
