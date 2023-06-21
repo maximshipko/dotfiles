@@ -16,6 +16,9 @@ yarn-error.log
 # Thumbnail cache files
 Thumbs.db
 
+# Ignore VSC settings
+.vscode/settings
+
 # nx app proxy configuration
 proxy.conf.json
 _test_.json

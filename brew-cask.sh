@@ -16,6 +16,7 @@ brew install --cask slack
 brew install --cask intellij-idea
 brew install --cask eclipse-ide
 brew install --cask postman
+brew install --cask figma
 
 brew tap homebrew/cask-fonts
 brew install --cask font-fira-code
