@@ -71,3 +71,11 @@ export NVM_DIR="$HOME/.nvm"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 export PATH="/usr/local/sbin:$PATH"
+
+
+# This will basically tell Nx that, while we know some of our cache may be coming from another machine, we trust it and confirm it is safe. 
+# Therefore, there is no need to reject cache that was generated elsewhere. 
+# The reason for this is because our cache is either created from our own machine or in CI only and can not be "poisoned" as Nx describes.
+# For more info, you can take a look at the Nx docs on this topic here:
+# https://nx.dev/recipes/troubleshooting/unknown-local-cache
+export NX_REJECT_UNKNOWN_LOCAL_CACHE=0
