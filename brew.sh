@@ -18,23 +18,11 @@ brew upgrade
 brew install z
 
 # Install more recent versions of some OS X tools
-brew install vim
-brew install nano
-brew install grep
 brew install openssh
-brew install bash
 brew install zsh
-
+brew install neovim
 brew install git
-brew install node # This installs `npm` too using the recommended installation method
-brew install yarn
-brew install tree
-brew install diff-so-fancy
-brew install coreutils
-brew install openjdk@11
-brew install helm
-
-brew install ncdu # find where your diskspace went: ncdu ~
+brew install nvm
 
 brew install antigen
 

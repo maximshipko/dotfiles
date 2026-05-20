@@ -1,76 +1,40 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 # history
 SAVEHIST=100000
 
-# antigen time!
-source $(brew --prefix)/share/antigen/antigen.zsh
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-######################################################################
-### install some antigen bundles
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
-# Don't load the oh-my-zsh's library. Takes too long. No need.
-antigen use oh-my-zsh
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
-# Guess what to install when running an unknown command.
-antigen bundle command-not-found
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
 
-# Helper for extracting different types of archives.
-antigen bundle extract
-
-# homebrew  - autocomplete on `brew install`
-antigen bundle brew
-antigen bundle brew-cask
-
-antigen bundle z
-antigen bundle git
-antigen bundle npm
-antigen bundle yarn
-
-# Additional completion definitions
-antigen bundle zsh-users/zsh-completions
-
-# Syntax highlighting on the readline
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# suggestions
-antigen bundle zsh-users/zsh-autosuggestions
-
-# colors for all files!
-# antigen bundle trapd00r/zsh-syntax-highlighting-filetypes
-
-# ZSH theme
-# antigen bundle sindresorhus/pure
-antigen theme denysdovhan/spaceship-prompt
-
-# Tell antigen that you're done.
-antigen apply
-
-#################################################################################################
-
-
-# Automatically list directory contents on `cd`.
-auto-ls () {
-	emulate -L zsh;
-	# explicit sexy ls'ing as aliases arent honored in here.
-	hash gls >/dev/null 2>&1 && CLICOLOR_FORCE=1 gls -aFh --color --group-directories-first || ls
-}
-chpwd_functions=( auto-ls $chpwd_functions )
+source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases
 
 # any private/sensetive info (like auth tokens, api keys) can set in `.extra`
 source ~/.extra
 
-export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
-
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-export PATH="/usr/local/sbin:$PATH"
+ export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d"
 
 
 # This will basically tell Nx that, while we know some of our cache may be coming from another machine, we trust it and confirm it is safe. 
@@ -79,3 +43,11 @@ export PATH="/usr/local/sbin:$PATH"
 # For more info, you can take a look at the Nx docs on this topic here:
 # https://nx.dev/recipes/troubleshooting/unknown-local-cache
 export NX_REJECT_UNKNOWN_LOCAL_CACHE=0
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export PATH="$HOME/.local/bin:$PATH"
+
+# z - jump around
+[ -f /opt/homebrew/etc/profile.d/z.sh ] && source /opt/homebrew/etc/profile.d/z.sh

@@ -1,37 +1,7 @@
-# mv, rm, cp
+alias ls='lsd'
 alias mv='mv -v'
 alias rm='rm -i -v'
 alias cp='cp -v'
 
-# alias ag='ag -f --hidden' # requires TheSilverSearcher to be installed https://geoff.greer.fm/ag/
-
-###
-# time to upgrade `ls`
-
-# use coreutils `ls` if possible…
-hash gls >/dev/null 2>&1 || alias gls="ls"
-
-# always use color, even when piping (to awk,grep,etc)
-if gls --color > /dev/null 2>&1; then colorflag="--color"; else colorflag="-G"; fi;
-export CLICOLOR_FORCE=1
-
-# ls options: A = include hidden (but not . or ..), F = put `/` after folders, h = byte unit suffixes
-alias ls='gls -AFh ${colorflag} --group-directories-first'
-alias lsd='ls -l | grep "^d"' # only directories
-###
-
-# Undo a `git push`
-# alias undopush="git push -f origin HEAD^:master"
-
-# Recursively delete `.DS_Store` files
-alias cleanup_dsstore="find . -name '*.DS_Store' -type f -ls -delete"
-
-# Shortcuts
-alias g="git"
-alias v="vim"
-alias ungz="gunzip -k"
-alias k="kubectl"
-
-# Update installed Homebrew, npm, and their installed packages
-alias upgrade="brew -v update; brew upgrade; brew cleanup; brew doctor; npm install npm -g; npm-check -g -u"
+#alias npm="echo '❌ npm is disabled — use pnpm instead.'; false"
 

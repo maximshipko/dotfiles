@@ -1,14 +1,11 @@
 [alias]
 	c = commit -amv
-	fpush = push --force
 	pushf = push --force-with-lease
 	s = status -sb
+	undocommit = reset HEAD~
 	amend = commit --amend --all
 	amendd = commit --amend --all --reuse-message=HEAD
-	undocommit = reset HEAD~
-	co = checkout
-	bra = branch -avv
-	df = diff --color --color-words --abbrev
+
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 	outgoing = log @{u}..
@@ -17,15 +14,6 @@
 	in = !git fetch && git log --pretty=oneline --abbrev-commit --graph ..@{u}
 	master = !git checkout master && git pull --prune
 	main = !git checkout main && git pull --prune
-	develop = !git checkout develop && git pull --prune
-	# remove ignored untracked files
-	clean-ignored = clean -fX
-
-	# Show the diff between the latest commit and the current state
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-
-	reup = rebase-update # depot_tools specific
-	git = !exec git # in case if you dobletype git like: '> git git log'
 
 	# Find commits by source code
 	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
@@ -52,24 +40,29 @@
 
 	# commit with given datetime (2021-11-23T15:32:10)
 	trick = "!f() { GIT_AUTHOR_DATE=\"$1\" GIT_COMMITTER_DATE=\"$1\" git commit; }; f"
-	
+
+	# List all worktrees
+	wt = worktree list
+	# Add a worktree for an existing branch: git wta <path> [branch]
+	wta = worktree add
+	# Create a new branch and worktree in one go: git wtb <new-branch> <path> [start-point]
+	wtb = "!f() { git worktree add -b \"$1\" \"$2\" \"${3:-HEAD}\"; }; f"
+	# Remove a worktree (must be run from outside the target worktree): git wtr <path>
+	wtr = worktree remove
+	# Prune stale worktree metadata (e.g. after manually deleting a worktree dir)
+	wtp = worktree prune
+	# Move a worktree to a new location: git wtm <path> <new-path>
+	wtm = worktree move
+
 
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
 	precomposeUnicode = true # useful when sharing a repository between Mac OS and Linux or Windows
 	# optimization for Windows
 	fscache = true
 	preloadIndex = true
-
-[pager]
-	# insanely beautiful diffs ==> npm install -g diff-so-fancy
-	diff = diff-so-fancy | less --tabs=4 -RFX
-	show = diff-so-fancy | less --tabs=4 -RFX
-
-[interactive]
-	# diffFilter = "diff-so-fancy"
 
 # so much color
 [color]
@@ -96,12 +89,6 @@
 	added = yellow
 	changed = green
 	untracked = cyan
-
-# git mergetool
-[merge]
-	tool = opendiff
-	renameLimit = 0
-
 
 	
 [url "git://gist.github.com/"]
@@ -144,3 +131,4 @@
   path = ~/.gitconfig.local
 [pull]
 	ff = only
+
